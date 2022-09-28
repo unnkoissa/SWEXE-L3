@@ -1,0 +1,14 @@
+<h1>Tweets#index</h1>
+<p>Find me in app/views/tweets/index.html.erb</p>
+<% @tweets.each do |a| %>
+    <p>
+        [メッセージ]
+        <%= a.message %>
+        [日時]
+        <%= a.tdate %>
+        <%= link_to '削除', "/tweets/#{a.id}", method: :delete %>
+        <%= link_to '表示', "/tweets/#{a.id}" %>
+        <%= link_to '編集', "/tweets/#{a.id}/edit" %>
+    </p>
+<% end %>
+<p><%= link_to '新規追加', '/tweets/new' %></p>

@@ -1,0 +1,10 @@
+<p>
+<strong>メッセージ:</strong>
+<%= @tweets.message %>
+</p>
+
+<p>
+<strong>経過時間</strong>:</strong>
+<%= (Time.current.min-@tweets.tdate.min).abs %>分
+</p>
+<%= link_to 'Back', '/' %>
