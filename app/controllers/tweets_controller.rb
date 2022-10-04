@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   def index
     @tweets = Tweet.all
+    logger.debug @tweets.count
   end
   
   def new
@@ -10,7 +11,7 @@ class TweetsController < ApplicationController
   def create
     @tweets = Tweet.new(message: params[:tweet][:message], tdate: Time.current)
     if @tweets.save
-      redirect_to '/'
+      redirect_to root_path
     else
       render 'new'
     end
@@ -19,7 +20,7 @@ class TweetsController < ApplicationController
   def destroy
     tweet = Tweet.find(params[:id])
     tweet.destroy
-    redirect_to '/'
+    redirect_to root_path
   end
   
   def show
@@ -33,7 +34,7 @@ class TweetsController < ApplicationController
   def update
     @tweets = Tweet.find(params[:id])
     @tweets.update(message: params[:tweet][:message])
-    redirect_to '/'
+    redirect_to root_path
   end
 end
 
